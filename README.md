@@ -52,15 +52,21 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.58.0 |
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_linux_web_apps"></a> [linux\_web\_apps](#module\_linux\_web\_apps) | ./modules/linux_web_apps | n/a |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [azurerm_resource_group.resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/3.58.0/docs/resources/resource_group) | resource |
 
 ## Inputs
 
@@ -71,10 +77,16 @@ No resources.
 | <a name="input_arm_subscription_id"></a> [arm\_subscription\_id](#input\_arm\_subscription\_id) | The Subscription ID which should be used. This can also be sourced <br>from the ARM\_SUBSCRIPTION\_ID Environment Variable. | `string` | n/a | yes |
 | <a name="input_arm_tenant_id"></a> [arm\_tenant\_id](#input\_arm\_tenant\_id) | The Tenant ID which should be used. This can also be sourced <br>from the ARM\_TENANT\_ID Environment Variable. | `string` | n/a | yes |
 | <a name="input_cloud_enviornment"></a> [cloud\_enviornment](#input\_cloud\_enviornment) | The Cloud Environment which should be used. Possible values are public,<br>`usgovernment`, `german`, and `china`. Defaults to `public`. This can also be <br>sourced from the ARM\_ENVIRONMENT Environment Variable. | `string` | `"public"` | no |
+| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Tags to be added to resources created. | `map(string)` | `{}` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | The name of the _environment_ to help identify resources. | `string` | n/a | yes |
+| <a name="input_location"></a> [location](#input\_location) | The Azure Region where the resource should exist. | `string` | `"West Europe"` | no |
+| <a name="input_project"></a> [project](#input\_project) | The name of the Azure DevOps project the resource belongs to. | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
+| <a name="output_linux_web_app_nodejs_site"></a> [linux\_web\_app\_nodejs\_site](#output\_linux\_web\_app\_nodejs\_site) | The url to the nodejs web app |
+| <a name="output_linux_web_app_python_site"></a> [linux\_web\_app\_python\_site](#output\_linux\_web\_app\_python\_site) | The url to the python web app. |
 | <a name="output_tenant_id"></a> [tenant\_id](#output\_tenant\_id) | The tenant ID used for this subscription. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK --->
