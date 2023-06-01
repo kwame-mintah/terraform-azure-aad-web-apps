@@ -13,6 +13,7 @@ resource "azurerm_service_plan" "linux_service_plan" {
   location            = var.location
   os_type             = "Linux"
   sku_name            = var.service_plan
+  tags                = merge(local.common_tags)
 }
 
 resource "azurerm_linux_web_app" "linux_web_app_python" {
@@ -23,13 +24,14 @@ resource "azurerm_linux_web_app" "linux_web_app_python" {
   https_only          = true
   app_settings = {
     "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
+    "FRONTEND_SERVICE_URL"           = "https://${azurerm_linux_web_app.linux_web_app_nodejs.default_hostname}"
   }
   site_config {
     always_on = var.environment == "development" ? "false" : "true"
     application_stack {
       python_version = "3.9"
     }
-    app_command_line = "gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app"
+    app_command_line = "gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app"
   }
   tags = merge(
     local.common_tags,
