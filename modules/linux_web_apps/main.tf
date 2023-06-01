@@ -1,6 +1,8 @@
 locals {
-  name_prefix = "${var.project}-${var.environment}"
-  common_tags = var.common_tags
+  name_prefix      = "${var.project}-${var.environment}"
+  common_tags      = var.common_tags
+  python_site_name = "${local.name_prefix}-be-${random_id.unique_name.hex}.azurewebsites.net"
+  nodejs_site_name = "${local.name_prefix}-fe-${random_id.unique_name.hex}.azurewebsites.net"
 }
 
 resource "random_id" "unique_name" {
@@ -24,7 +26,7 @@ resource "azurerm_linux_web_app" "linux_web_app_python" {
   https_only          = true
   app_settings = {
     "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
-    "FRONTEND_SERVICE_URL"           = "https://${azurerm_linux_web_app.linux_web_app_nodejs.default_hostname}"
+    "FRONTEND_SERVICE_URL"           = "https://${local.nodejs_site_name}"
   }
   site_config {
     always_on = var.environment == "development" ? "false" : "true"
@@ -48,7 +50,8 @@ resource "azurerm_linux_web_app" "linux_web_app_nodejs" {
   service_plan_id     = azurerm_service_plan.linux_service_plan.id
   https_only          = true
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE" = "1"
+    "WEBSITE_RUN_FROM_PACKAGE"      = "1"
+    "REACT_APP_BACKEND_SERVICE_URL" = "https://${local.python_site_name}"
   }
   site_config {
     always_on = var.environment == "development" ? "false" : "true"
