@@ -19,3 +19,9 @@ secrets.tfvars
 
 ## Terragrun cache
 .terragrunt-cache
+
+## Logs
+*.log
+
+## history extension
+.history
