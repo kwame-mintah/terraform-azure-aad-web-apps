@@ -28,6 +28,17 @@ module "linux_web_apps" {
   project        = var.project
   resource_group = azurerm_resource_group.resource_group.name
   common_tags = merge(
-    local.common_tags,
+    local.common_tags
   )
+}
+
+module "aad_applications" {
+  source      = "./modules/aad_application_registration"
+  app_owners  = var.add_app_owners
+  environment = var.environment
+  project     = var.project
+  web_redirect_uris = [
+    "https://${module.linux_web_apps.linux_web_app_nodejs_site}/auth/redirect/",
+    "https://${module.linux_web_apps.linux_web_app_python_site}/",
+  ]
 }

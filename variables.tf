@@ -42,6 +42,17 @@ EOF
 
 }
 
+variable "add_app_owners" {
+  description = <<-EOF
+    Add additional owners to the application registration,
+    by defualt the caller is added.
+    
+EOF
+
+  type    = string
+  default = ""
+}
+
 variable "cloud_enviornment" {
   description = <<-EOF
   The Cloud Environment which should be used. Possible values are public,
