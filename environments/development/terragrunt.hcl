@@ -5,24 +5,25 @@ terraform {
 
 locals {
   environment = "development"
-  project = "uow"
+  project     = "uow"
 }
 
 # These are inputs that need to be passed for the terragrunt configuration
 inputs = {
-  add_app_owners = "1239ac97-8ed6-4088-9670-14c8e238aed8"
-  project = "uow"
-  environment = "development"
+  add_app_owners        = "1239ac97-8ed6-4088-9670-14c8e238aed8"
+  add_web_redirect_uris = "http://localhost:3000/redirect"
+  project               = "uow"
+  environment           = "development"
   common_tags = {
     "Environment" = "development"
-    "Project" = "uow"
-    "Terraform" = "true"
+    "Project"     = "uow"
+    "Terraform"   = "true"
   }
 }
 
 remote_state {
   backend = "local"
-  config  = {
-     path = "${get_parent_terragrunt_dir()}/${path_relative_to_include()}/${local.project}-terraform.tfstate"
+  config = {
+    path = "${get_parent_terragrunt_dir()}/${path_relative_to_include()}/${local.project}-terraform.tfstate"
   }
 }
