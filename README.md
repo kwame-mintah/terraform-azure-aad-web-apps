@@ -74,6 +74,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_add_app_owners"></a> [add\_app\_owners](#input\_add\_app\_owners) | Add additional owners to the application registration,<br>by defualt the caller is added. | `string` | `""` | no |
+| <a name="input_add_web_redirect_uris"></a> [add\_web\_redirect\_uris](#input\_add\_web\_redirect\_uris) | Add additional redirect uris the application registration,<br>comma seperated and a valid uri. | `string` | `""` | no |
 | <a name="input_arm_client_id"></a> [arm\_client\_id](#input\_arm\_client\_id) | The Client ID which should be used. This can also be sourced <br>from the ARM\_CLIENT\_ID Environment Variable. | `string` | n/a | yes |
 | <a name="input_arm_client_secret"></a> [arm\_client\_secret](#input\_arm\_client\_secret) | The Client Secret which should be used. This can also be sourced <br>from the ARM\_CLIENT\_SECRET Environment Variable. | `string` | n/a | yes |
 | <a name="input_arm_subscription_id"></a> [arm\_subscription\_id](#input\_arm\_subscription\_id) | The Subscription ID which should be used. This can also be sourced <br>from the ARM\_SUBSCRIPTION\_ID Environment Variable. | `string` | n/a | yes |

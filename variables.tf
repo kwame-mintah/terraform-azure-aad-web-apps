@@ -53,6 +53,17 @@ EOF
   default = ""
 }
 
+variable "add_web_redirect_uris" {
+  description = <<-EOF
+    Add additional redirect uris the application registration,
+    comma seperated and a valid uri.
+    
+EOF
+
+  type    = string
+  default = ""
+}
+
 variable "cloud_enviornment" {
   description = <<-EOF
   The Cloud Environment which should be used. Possible values are public,

@@ -40,5 +40,6 @@ module "aad_applications" {
   web_redirect_uris = [
     "https://${module.linux_web_apps.linux_web_app_nodejs_site}/auth/redirect/",
     "https://${module.linux_web_apps.linux_web_app_python_site}/",
+    var.add_web_redirect_uris != "" ? var.add_web_redirect_uris : null
   ]
 }
