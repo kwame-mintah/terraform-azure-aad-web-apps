@@ -1,6 +1,4 @@
-locals {
-
-}
+locals {}
 
 data "azuread_client_config" "current" {}
 
@@ -41,6 +39,8 @@ resource "azuread_application_password" "aad_application_password" {
   rotate_when_changed = {
     rotation = time_rotating.aad_application_password_rotation.id
   }
+
+  depends_on = [azuread_application.aad_application]
 }
 
 resource "time_rotating" "aad_application_password_rotation" {

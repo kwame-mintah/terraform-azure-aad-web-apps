@@ -1,9 +1,9 @@
 # Azure Active Directory Application Registration
 
 This module will create a new application registration in the same tenant that the infrastructure has been configured to. The following API permissions will be needed
-for your terraform principal (user creating azure resources): `Application.ReadWrite.All` or `Directory.ReadWrite.All`, Application.ReadWrite.OwnedBy` and `User.Read.All` as per [docs](https://registry.terraform.io/providers/hashicorp/azuread/2.39.0/docs/resources/application#api-permissions).
+for your terraform principal (user creating azure resources): `Application.ReadWrite.All` or `Directory.ReadWrite.All`, `Application.ReadWrite.OwnedBy` and `User.Read.All` as per [docs](https://registry.terraform.io/providers/hashicorp/azuread/2.39.0/docs/resources/application#api-permissions).
 
-The application will be configured for use for integrating azure ad into an react / nodejs web application.
+The application will be configured for integrating azure ad into an react / nodejs web application.
 
 The following manual steps may need to be taken:
 - [Enable self-service sign-up for your tenant](https://learn.microsoft.com/en-gb/azure/active-directory/external-identities/self-service-sign-up-user-flow#enable-self-service-sign-up-for-your-tenant)
