@@ -58,7 +58,7 @@ resource "azurerm_linux_web_app" "linux_web_app_nodejs" {
     application_stack {
       node_version = "18-lts"
     }
-    app_command_line = "pm2 serve /home/site/wwwroot --spa --no-daemon"
+    app_command_line = "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon"
   }
   tags = merge(
     local.common_tags,
