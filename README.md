@@ -84,6 +84,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="input_environment"></a> [environment](#input\_environment) | The name of the _environment_ to help identify resources. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | The Azure Region where the resource should exist. | `string` | `"West Europe"` | no |
 | <a name="input_project"></a> [project](#input\_project) | The name of the Azure DevOps project the resource belongs to. | `string` | n/a | yes |
+| <a name="input_web_app_service_plan"></a> [web\_app\_service\_plan](#input\_web\_app\_service\_plan) | The app service pricing plan. | `string` | `"F1"` | no |
 
 ## Outputs
 

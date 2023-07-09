@@ -114,3 +114,13 @@ EOF
 
   type = string
 }
+
+variable "web_app_service_plan" {
+  description = <<-EOF
+  The app service pricing plan.
+
+EOF
+
+  type    = string
+  default = "F1"
+}
