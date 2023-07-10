@@ -1,6 +1,6 @@
-# Terraform Azurem Template
+# UoW Infrastructure Terraform
 
-The main purpose of this repository is to create a template for [Terraform](https://www.terraform.io/). This project will focus on the [Azurem](https://registry.terraform.io/providers/hashicorp/azurerm/3.58.0) provider.
+This repository will deploy Azure Web Apps and configure Azure Active Directory (AAD) for the [UoW Frontend App](https://dev.azure.com/k-space/uow/_git/uow-frontend-app) and [UoW Backend App](https://dev.azure.com/k-space/uow/_git/uow-backend-app).
 
 ## Development
 
