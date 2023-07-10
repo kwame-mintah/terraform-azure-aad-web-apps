@@ -25,8 +25,10 @@ resource "azurerm_linux_web_app" "linux_web_app_python" {
   service_plan_id     = azurerm_service_plan.linux_service_plan.id
   https_only          = true
   app_settings = {
-    "SCM_DO_BUILD_DURING_DEPLOYMENT" = "true"
-    "FRONTEND_SERVICE_URL"           = "https://${local.nodejs_site_name}"
+    "SCM_DO_BUILD_DURING_DEPLOYMENT"  = "true"
+    "FRONTEND_SERVICE_URL"            = "https://${local.nodejs_site_name}"
+    "SCM_COMMAND_IDLE_TIMEOUT"        = "1800"
+    "WEBSITE_ENABLE_SYNC_UPDATE_SITE" = "true"
   }
   site_config {
     always_on = var.environment == "development" ? "false" : "true"
@@ -50,8 +52,8 @@ resource "azurerm_linux_web_app" "linux_web_app_nodejs" {
   service_plan_id     = azurerm_service_plan.linux_service_plan.id
   https_only          = true
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE"      = "1"
-    "REACT_APP_BACKEND_SERVICE_URL" = "https://${local.python_site_name}"
+    "WEBSITE_RUN_FROM_PACKAGE"        = "1"
+    "NEXT_PUBLIC_BACKEND_SERVICE_URL" = "https://${local.python_site_name}"
   }
   site_config {
     always_on = var.environment == "development" ? "false" : "true"

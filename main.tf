@@ -27,7 +27,7 @@ module "linux_web_apps" {
   environment    = var.environment
   project        = var.project
   resource_group = azurerm_resource_group.resource_group.name
-  service_plan = var.web_app_service_plan
+  service_plan   = var.web_app_service_plan
   common_tags = merge(
     local.common_tags
   )
