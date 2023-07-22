@@ -15,6 +15,7 @@ The following manual steps may need to be taken:
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | = 1.4.5 |
 | <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | 2.39.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | 3.5.1 |
 | <a name="requirement_time"></a> [time](#requirement\_time) | 0.9.1 |
 
 ## Providers
@@ -22,6 +23,7 @@ The following manual steps may need to be taken:
 | Name | Version |
 |------|---------|
 | <a name="provider_azuread"></a> [azuread](#provider\_azuread) | 2.39.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
 | <a name="provider_time"></a> [time](#provider\_time) | 0.9.1 |
 
 ## Modules
@@ -34,6 +36,7 @@ No modules.
 |------|------|
 | [azuread_application.aad_application](https://registry.terraform.io/providers/hashicorp/azuread/2.39.0/docs/resources/application) | resource |
 | [azuread_application_password.aad_application_password](https://registry.terraform.io/providers/hashicorp/azuread/2.39.0/docs/resources/application_password) | resource |
+| [random_uuid.uuid](https://registry.terraform.io/providers/hashicorp/random/3.5.1/docs/resources/uuid) | resource |
 | [time_rotating.aad_application_password_rotation](https://registry.terraform.io/providers/hashicorp/time/0.9.1/docs/resources/rotating) | resource |
 | [azuread_client_config.current](https://registry.terraform.io/providers/hashicorp/azuread/2.39.0/docs/data-sources/client_config) | data source |
 

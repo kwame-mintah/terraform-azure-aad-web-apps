@@ -2,13 +2,46 @@ locals {}
 
 data "azuread_client_config" "current" {}
 
+resource "random_uuid" "uuid" {
+  count = 2
+}
+
+
 resource "azuread_application" "aad_application" {
   display_name            = "${var.project}-${var.environment}-apps"
   prevent_duplicate_names = true
   owners                  = var.app_owners != "" ? [data.azuread_client_config.current.object_id, var.app_owners] : [data.azuread_client_config.current.object_id]
 
-  single_page_application {
+  web {
     redirect_uris = var.web_redirect_uris
+    implicit_grant {
+      access_token_issuance_enabled = false
+      id_token_issuance_enabled     = true
+    }
+  }
+
+  api {
+    mapped_claims_enabled = true
+
+    oauth2_permission_scope {
+      admin_consent_description  = "Allow the application to access ${var.project}-${var.environment} on behalf of the signed-in user."
+      admin_consent_display_name = "Create and access protected content for the user"
+      enabled                    = true
+      id                         = random_uuid.uuid[0].result
+      type                       = "User"
+      user_consent_description   = "Allow the application to access ${var.project}-${var.environment} on your behalf."
+      user_consent_display_name  = "User impersonation scope"
+      value                      = "user_impersonation"
+    }
+
+    oauth2_permission_scope {
+      admin_consent_description  = "Administer of the ${var.project}-${var.environment} application"
+      admin_consent_display_name = "Administer"
+      enabled                    = true
+      id                         = random_uuid.uuid[1].result
+      type                       = "Admin"
+      value                      = "administer"
+    }
   }
 
   required_resource_access {
@@ -27,8 +60,8 @@ resource "azuread_application" "aad_application" {
     "Managed By Terraform",
     var.project,
     var.environment,
-    "webApp",      # Created by Azure, added so its ignored when being removed.
-    "apiConsumer", # Created by Azure, added so its ignored when being removed.
+    "webApp",      # Created by Azure, added so its ignored instead of being removed.
+    "apiConsumer", # Created by Azure, added so its ignored instead of being removed.
   ]
 }
 
