@@ -26,7 +26,7 @@ resource "azurerm_linux_web_app" "linux_web_app_python" {
   https_only          = true
   app_settings = {
     "SCM_DO_BUILD_DURING_DEPLOYMENT"  = "true"
-    "FRONTEND_SERVICE_URL"            = "https://${local.nodejs_site_name}"
+    "ALLOW_CORS_ORIGINS"              = "https://${local.nodejs_site_name}"
     "SCM_COMMAND_IDLE_TIMEOUT"        = "1800"
     "WEBSITE_ENABLE_SYNC_UPDATE_SITE" = "true"
   }
@@ -52,8 +52,19 @@ resource "azurerm_linux_web_app" "linux_web_app_nodejs" {
   service_plan_id     = azurerm_service_plan.linux_service_plan.id
   https_only          = true
   app_settings = {
-    "WEBSITE_RUN_FROM_PACKAGE"        = "1"
-    "NEXT_PUBLIC_BACKEND_SERVICE_URL" = "https://${local.python_site_name}"
+    "WEBSITE_RUN_FROM_PACKAGE" = "1"
+    "BACKEND_SERVICE_URL"      = "https://${local.python_site_name}"
+  }
+
+  auth_settings_v2 {
+    auth_enabled     = true
+    default_provider = "azureactivedirectory"
+    active_directory_v2 {
+      client_id                  = var.aad_v2_client_id
+      tenant_auth_endpoint       = "https://login.microsoftonline.com/v2.0/${var.aad_v2_tenant_auth_endpoint}/"
+      client_secret_setting_name = "${var.project}-${var.environment}-apps"
+    }
+    login {}
   }
   site_config {
     always_on = var.environment == "development" ? "false" : "true"

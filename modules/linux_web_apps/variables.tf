@@ -1,3 +1,23 @@
+variable "aad_v2_client_id" {
+  description = <<-EOF
+    The ID of the Client to use to 
+    authenticate with Azure Active Directory.
+    
+EOF
+
+  type = string
+}
+
+variable "aad_v2_tenant_auth_endpoint" {
+  description = <<-EOF
+    The Azure Tenant Endpoint for the 
+    Authenticating Tenant. 
+    
+EOF
+
+  type = string
+}
+
 variable "common_tags" {
   description = <<-EOF
     Tags to be added to resources created.

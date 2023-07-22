@@ -36,6 +36,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_aad_v2_client_id"></a> [aad\_v2\_client\_id](#input\_aad\_v2\_client\_id) | The ID of the Client to use to <br>authenticate with Azure Active Directory. | `string` | n/a | yes |
+| <a name="input_aad_v2_tenant_auth_endpoint"></a> [aad\_v2\_tenant\_auth\_endpoint](#input\_aad\_v2\_tenant\_auth\_endpoint) | The Azure Tenant Endpoint for the <br>Authenticating Tenant. | `string` | n/a | yes |
 | <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Tags to be added to resources created. | `map(string)` | `{}` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The name of the _environment_ to help identify resources. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | The Azure Region where the resource should exist. | `string` | `"West Europe"` | no |
