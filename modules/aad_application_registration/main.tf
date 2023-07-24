@@ -47,12 +47,28 @@ resource "azuread_application" "aad_application" {
   required_resource_access {
     resource_app_id = "00000003-0000-0000-c000-000000000000" # Microsoft Graph
     resource_access {
+      id   = "14dad69e-099b-42c9-810b-d002981feec1" # Profile
+      type = "Scope"
+    }
+    resource_access {
       id   = "7427e0e9-2fba-42fe-b0c0-848c9e6a8182" # OpenId offline_access
       type = "Scope"
     }
     resource_access {
       id   = "37f7f235-527c-4136-accd-4a02d197296e" # Openid openid
       type = "Scope"
+    }
+    resource_access {
+      id   = "64a6cdd6-aab1-4aaf-94b8-3cc8405e90d0" # Email
+      type = "Scope"
+    }
+    resource_access {
+      id   = "76bc735e-aecd-4a1d-8b4c-2b915deabb79" # Presence.Read
+      type = "Scope"
+    }
+    resource_access {
+      id   = "83cded22-8297-4ff6-a7fa-e97e9545a259" # Presence.ReadWrite.All
+      type = "Role"
     }
   }
 
