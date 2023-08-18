@@ -1,3 +1,4 @@
+# Decommissioned Friday 18th 2023
 # Terragrunt will copy the Terraform files from the locations specified into this directory
 terraform {
   source = "../.."
