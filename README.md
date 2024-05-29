@@ -1,6 +1,13 @@
 # UoW Infrastructure Terraform
 
-This repository will deploy Azure Web Apps and configure Azure Active Directory (AAD) for the [UoW Frontend App](https://dev.azure.com/k-space/uow/_git/uow-frontend-app) and [UoW Backend App](https://dev.azure.com/k-space/uow/_git/uow-backend-app).
+This repository will deploy Azure Web Apps and configure Azure Active Directory (AAD) for the [UoW Frontend App](https://dev.azure.com/k-space/uow/_git/uow-frontend-app)[^1] and [UoW Backend App](https://dev.azure.com/k-space/uow/_git/uow-backend-app)[^2].
+
+
+> [!NOTE]
+>
+> This repository was created within Azure DevOps and is now being mirrored to this GitHub [repository](https://github.com/kwame-mintah/terraform-azure-aad-web-apps).
+> Source of truth will always be the Azure DevOps [repository](https://dev.azure.com/k-space/uow/_git/uow-infrastructure-terraform). Furthermore, this repository is
+> a proof of concept to demonstrate deploying a Frontend and Backend service via Azure Web Apps so YMMV.
 
 ## Development
 
@@ -97,3 +104,6 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="output_linux_web_app_python_site"></a> [linux\_web\_app\_python\_site](#output\_linux\_web\_app\_python\_site) | The url to the python web app. |
 | <a name="output_tenant_id"></a> [tenant\_id](#output\_tenant\_id) | The tenant ID used for this subscription. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK --->
+
+[^1]: My Azure DevOps organisation / project is private, FastAPI repository is mirrored [here](https://github.com/kwame-mintah/python-fastapi-create-installation-scripts) in GitHub.
+[^2]: My Azure DevOps organisation / project is private, NextJS repository is mirrored [here](https://github.com/kwame-mintah/nextjs-project-installation-dashboard) in GitHub.
