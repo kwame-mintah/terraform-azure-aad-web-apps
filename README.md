@@ -68,6 +68,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | Name | Type |
 |------|------|
 | [azurerm_resource_group.resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/3.58.0/docs/resources/resource_group) | resource |
+| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/3.58.0/docs/data-sources/client_config) | data source |
 
 ## Inputs
 

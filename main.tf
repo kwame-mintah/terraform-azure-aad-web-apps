@@ -1,3 +1,4 @@
+data "azurerm_client_config" "current" {}
 locals {
   common_tags = merge(
     var.common_tags
@@ -31,6 +32,8 @@ module "linux_web_apps" {
   common_tags = merge(
     local.common_tags
   )
+  aad_v2_tenant_auth_endpoint = data.azurerm_client_config.current.tenant_id
+  aad_v2_client_id            = "17a18884-ae6d-43a6-887a-e61819f671ca"
 }
 
 module "aad_applications" {
@@ -39,8 +42,8 @@ module "aad_applications" {
   environment = var.environment
   project     = var.project
   web_redirect_uris = [
-    "https://${module.linux_web_apps.linux_web_app_nodejs_site}/auth/redirect/",
-    "https://${module.linux_web_apps.linux_web_app_python_site}/",
+    "https://${module.linux_web_apps.linux_web_app_nodejs_site}/.auth/login/aad/callback",
+    "https://${module.linux_web_apps.linux_web_app_python_site}/.auth/login/aad/callback",
     var.add_web_redirect_uris != "" ? var.add_web_redirect_uris : null
   ]
 }
